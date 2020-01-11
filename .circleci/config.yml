@@ -4,7 +4,7 @@ executors:
     environment:
       IMAGE_NAME: danielsiefert/devops-capstone
     docker:
-      - image: circleci/buildpack-deps:stretch
+      - image: httpd:2.41
 jobs:
    build:
     executor: docker-publisher
@@ -19,7 +19,7 @@ jobs:
       environment:
         IMAGE_NAME: danielsiefert/devops-capstone
       docker:
-        - image: circleci/buildpack-deps:stretch
+        - image: httpd:2.41
       steps:
         - setup_remote_docker
         - run:
