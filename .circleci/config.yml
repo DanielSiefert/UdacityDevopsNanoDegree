@@ -17,7 +17,7 @@ jobs:
            docker build -t $IMAGE_NAME:latest .
    publish-latest:
       environment:
-        IMAGE_NAME: devopscapstone
+        IMAGE_NAME: danielsiefert/devopscapstone
       docker:
         - image: circleci/buildpack-deps:stretch
       steps:
