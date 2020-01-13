@@ -20,7 +20,7 @@ jobs:
     - run:
          name: Lint Dockerfile
          command: |
-           hadolint Dockerfile
+           ./hadolint Dockerfile
     - run:
          name: Build Docker image
          command: |
