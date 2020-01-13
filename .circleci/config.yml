@@ -2,7 +2,7 @@ version: 2.1
 executors:
   docker-publisher:
     environment:
-      IMAGE_NAME: devops-capstone
+      IMAGE_NAME: danielsiefert/devops-capstone
     docker:
       - image: circleci/buildpack-deps:stretch
 jobs:
@@ -20,9 +20,9 @@ jobs:
          name: Archive Docker image
          command: docker save -o image.tar $IMAGE_NAME
     - persist_to_workspace:
-         root: .
-         paths:
-           - ./image.tar
+        root: .
+        paths:
+          - ./image.tar
    publish-latest:
     executor: docker-publisher
     steps:
