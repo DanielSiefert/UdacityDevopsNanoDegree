@@ -1,0 +1,22 @@
+{
+   "kind":"Service",
+   "apiVersion":"v1",
+   "metadata":{
+      "name":"my-travel-blog",
+      "labels":{
+         "app":"my-travel-blog"
+      }
+   },
+   "spec":{
+      "ports": [
+         {
+           "port":80,
+           "targetPort":"http-server"
+         }
+      ],
+      "selector":{
+         "app":"my-travel-blog"
+      },
+      "type": "LoadBalancer"
+   }
+}

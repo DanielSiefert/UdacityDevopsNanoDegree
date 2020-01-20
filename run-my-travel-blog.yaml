@@ -1,0 +1,22 @@
+service/networking/run-my-travel-blog.yaml 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-travel-blog
+spec:
+  selector:
+    matchLabels:
+      run: my-travel-blog
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        run: my-travel-blog
+    spec:
+      containers:
+      - name: my-travel-blog
+        image: danielsiefert/devops-capstone
+        ports:
+        - containerPort: 80
+
