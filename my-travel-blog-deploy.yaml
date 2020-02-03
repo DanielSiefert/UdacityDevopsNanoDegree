@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-travel-blog
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-travel-blog
+  template:
+    metadata:
+      labels:
+        app: my-travel-blog
+    spec:
+      containers:
+      - name: my-travel-blog
+        image: danielsiefert/devops-capstone:latest
+        ports:
+        - containerPort: 80
+
