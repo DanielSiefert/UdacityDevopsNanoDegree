@@ -1,6 +1,4 @@
-This project uses a centralized image repository to manage images built in the project. After a clean build, images are pushed to DockerHub.
-
-When repo is used with CircleCI the Dockerfile and HTML is checked against a linter as part of a Continuous Integration step
+This project pulls together techniques used to run containers in various different manners from the simplest running of a container using docker to running the same container in a 3 node kubernetes cluster on AWS's EKS.  In addition to showing how to run a container, the project can introduce the basics of continuous integration when linked with CircleCI
 
 Takes a Dockerfile and creates a Docker container in the pipeline.
 
@@ -12,7 +10,17 @@ Kubernetes cluster deploys docker container with CloudFormation using eksctl (ru
 
 - Run run_docker.sh shell script
 
-- Access "localhost:8080" in browser
+- Access "localhost:8080" in your browser to view the Travel Blog Site
+
+### Run locally using MiniKube
+
+- Clone the repo if you haven't already
+
+- Setup Minikube for your machine (https://kubernetes.io/docs/tasks/tools/install-minikube/)
+
+- Run `run_local_k8s.sh` from root of repo to deploy container
+
+- Pull up localhost:8000 in your browser to view the Travel Blog Site
 
 
 ### To deploy AWS Cluster:
