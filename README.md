@@ -1,21 +1,21 @@
-This project uses a centralized image repository to manage images built in the project. After a clean build, images are pushed to the repository.
+This project uses a centralized image repository to manage images built in the project. After a clean build, images are pushed to DockerHub.
 
-Dockerfile and HTML is checked against a linter as part of a Continuous Integration step (via CircleCI)
+When repo is used with CircleCI the Dockerfile and HTML is checked against a linter as part of a Continuous Integration step
 
 Takes a Dockerfile and creates a Docker container in the pipeline.
 
 Kubernetes cluster deploys docker container with CloudFormation using eksctl (run_aws.sh) or can be deployed locally with minikube (run_local_k8s.sh)
 
-To build the docker image locally:
+### To build the docker image locally:
 
-Clone the repo
+- Clone the repo
 
-Run run_docker.sh shell script
+- Run run_docker.sh shell script
 
-Access "localhost:8080" in browser
+- Access "localhost:8080" in browser
 
 
-To deploy AWS Cluster:
+### To deploy AWS Cluster:
 
 - Setup AWS CLI on your local machine (https://docs.aws.amazon.com/cli/latest/userguide/install-cliv1.html)
 
@@ -41,7 +41,7 @@ To deploy AWS Cluster:
 
 - Run `eksctl delete cluster -f eksctl-parameters.yaml' to delete the EKS cluster created
 
-[Updating the site, linting and performing a "rolling update"]
+### Updating the site, linting and performing a "rolling update"
 
 - Get an AWS EKS cluster running using the steps above
 
@@ -51,7 +51,7 @@ To deploy AWS Cluster:
 
 - In your CircleCI account, add your repo and under project settings add DOCKERHUB_USERNAME and DOCKERHUB_PASS environment variables so that it can push to docker hub once CI steps have been completed.
 
--Edit the index.html file in the travel-blog-site subfolder and on line 62 change the title of the blog to your own name
+- Edit the index.html file in the travel-blog-site subfolder and on line 62 change the title of the blog to your own name
 
 - Push index.html change up to your GitHub Repo
 
