@@ -21,8 +21,6 @@ Kubernetes cluster deploys docker container with CloudFormation using eksctl (ru
 
 - Log into your AWS account using the CLI and make sure you are in the US-East-1 (N Virginia) Region
 
-- Ensure you have created an SSH key pair for connecting to EC2 Instances (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)
-
 - If you haven't already setup kubectl (https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 - Clone the repo to your local machine (https://git-scm.com/docs/git-clone)
@@ -62,3 +60,5 @@ Kubernetes cluster deploys docker container with CloudFormation using eksctl (ru
 - Run `kubectl apply -f my-travel-blog-deploy.yaml` to update the deployment
 
 - If you haven't already started the service run `kubectl apply -f my-travel-blog-svc.yaml`
+
+- Check for update in browser (run `kubectl get services` to get external address)
