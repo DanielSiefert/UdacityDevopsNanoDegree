@@ -12,5 +12,5 @@ docker build --tag $dockerpath .
 docker images $dockerpath
 
 # Step 3: 
-# Run flask app
+# Run the container
 docker run -p 127.0.0.1:8080:80 $dockerpath
