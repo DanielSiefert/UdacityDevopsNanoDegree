@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: Travel-Blog-K8S-Cluster
+  name: Travel-Blog
   region: us-east-1
 
 nodeGroups:
