@@ -1,7 +1,7 @@
 pipeline {
     environment {
-    registry = "danielsiefert/"
-    registryCredential = ‘dockerhub’
+        registry = "danielsiefert/devops-capstone"
+        registryCredential = ‘dockerhub’
     }
     agent {
         docker { image 'circleci/buildpack-deps:stretch' }
@@ -26,7 +26,9 @@ pipeline {
              }
         stage('Build Docker Image') {
             steps {
-                docker.build registry + ":$BUILD_NUMBER"
+               scripts {                    
+                   docker.build registry + ":$BUILD_NUMBER"
+                  }
                 }
              }
         }
