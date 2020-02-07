@@ -1,7 +1,8 @@
 pipeline {
-    agent {
-        docker { image 'danielsiefert/devops-capstone' }
+    environment {
+        dockerhubCredentials = 'dockerhub'
     }
+    agent any
     stages {
         stage('Add Dockerfile linter - hadolint') {
               steps {
@@ -19,6 +20,16 @@ pipeline {
             steps {
                 sh 'tar -zcf travel-blog-site.tar.gz -C $PWD/travel-blog-site .'
                 }
-             }
         }
+        stage('Build & Push to dockerhub') {
+            steps {
+                script {
+                    dockerImage = docker.build("danielsiefert/devops_capstone:$BUILDID")
+                    docker.withRegistry('', dockerhub) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }        
     }
+}
