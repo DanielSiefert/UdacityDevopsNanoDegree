@@ -24,7 +24,7 @@ pipeline {
         stage('Build & Push to dockerhub') {
             steps {
                 script {
-                    dockerImage = docker.build("danielsiefert/devops_capstone:$BUILD_NUMBER")
+                    dockerImage = docker.build("danielsiefert/devops-capstone:$BUILD_NUMBER")
                     docker.withRegistry('', dockerhubCredentials) {
                         dockerImage.push()
                     }
