@@ -30,6 +30,15 @@ pipeline {
                     }
                 }
             }
+        }
+        stage('Rolling Deploy on AWS EKS') {
+            steps {
+                    withAWS(credentials: 'awsCreds', region: 'us-east-1') {
+                            sh "aws eks --region us-east-1 update-kubeconfig --name my-travel-blog"
+                            sh 'kubectl apply -f my-travel-blog-delpoy.yaml'
+                    }
+                    
+            }
         }        
     }
 }
