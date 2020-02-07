@@ -1,11 +1,8 @@
 pipeline {
     environment {
-        registry = "danielsiefert/devops-capstone"
-        registryCredential = ‘dockerhub’
+        dockerhubCredentials = 'dockerhub'
     }
-    agent {
-        docker { image 'circleci/buildpack-deps:stretch' }
-    }
+    agent any
     stages {
         stage('Add Dockerfile linter - hadolint') {
               steps {
@@ -23,13 +20,16 @@ pipeline {
             steps {
                 sh 'tar -zcf travel-blog-site.tar.gz -C $PWD/travel-blog-site .'
                 }
-             }
-        stage('Build Docker Image') {
-            steps {
-               scripts {                    
-                   docker.build registry + ":$BUILD_NUMBER"
-                  }
-                }
-             }
         }
+        stage('Build & Push to dockerhub') {
+            steps {
+                script {
+                    dockerImage = docker.build("danielsiefert/devops_capstone:$BUILD_NUMBER")
+                    docker.withRegistry('', dockerhub) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }        
     }
+}
