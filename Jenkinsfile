@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     dockerImage = docker.build("danielsiefert/devops_capstone:$BUILD_NUMBER")
-                    docker.withRegistry('', dockerhub) {
+                    docker.withRegistry('', dockerhubCredentials) {
                         dockerImage.push()
                     }
                 }
