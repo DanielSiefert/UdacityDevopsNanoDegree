@@ -36,8 +36,8 @@ pipeline {
                     withAWS(credentials: 'awsCreds', region: 'us-east-1') {
                             sh 'curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
                             sh 'unzip awscliv2.zip'
-                            sh 'sudo ./aws/install'
-                            sh 'aws eks --region us-east-1 update-kubeconfig --name my-travel-blog'
+                            sh './aws/install -i ~/.local/aws-cli -b ~/.local/bin
+                            sh 'aws2 eks --region us-east-1 update-kubeconfig --name my-travel-blog'
                             sh 'kubectl apply -f my-travel-blog-delpoy.yaml'
                     }
                     
