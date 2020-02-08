@@ -34,9 +34,6 @@ pipeline {
         stage('Rolling Deploy on AWS EKS') {
             steps {
                     withAWS(credentials: 'awsCreds', region: 'us-east-1') {
-                            sh 'curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
-                            sh 'unzip awscliv2.zip'
-                            sh './aws/install -i ~/.local/aws-cli -b ~/.local/bin'
                             sh '~/.local/aws-cli eks --region us-east-1 update-kubeconfig --name my-travel-blog'
                             sh 'kubectl apply -f my-travel-blog-delpoy.yaml'
                     }
