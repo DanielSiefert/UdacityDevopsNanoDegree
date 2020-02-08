@@ -37,7 +37,7 @@ pipeline {
                             sh 'curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
                             sh 'unzip awscliv2.zip'
                             sh './aws/install -i ~/.local/aws-cli -b ~/.local/bin'
-                            sh 'aws2 eks --region us-east-1 update-kubeconfig --name my-travel-blog'
+                            sh '~/.local/aws-cli eks --region us-east-1 update-kubeconfig --name my-travel-blog'
                             sh 'kubectl apply -f my-travel-blog-delpoy.yaml'
                     }
                     
