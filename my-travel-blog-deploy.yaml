@@ -14,7 +14,11 @@ spec:
     spec:
       containers:
       - name: my-travel-blog
-        image: danielsiefert/devops-capstone:$BUILD_NUMBER
+        image: danielsiefert/devops-capstone:latest
+        imagePullPolicy: "Always"
+        env:
+        - name: DEPLOY_DATE
+          value: '20200218_0311'
         ports:
         - containerPort: 80
 
