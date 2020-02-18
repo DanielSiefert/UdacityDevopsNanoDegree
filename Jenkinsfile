@@ -24,11 +24,20 @@ pipeline {
         stage('Build & Push to dockerhub') {
             steps {
                 script {
-                    dockerImage = docker.build("danielsiefert/devops_capstone:$BUILDID")
-                    docker.withRegistry('', dockerhub) {
+                    dockerImage = docker.build("danielsiefert/devops-capstone:$BUILD_NUMBER")
+                    docker.withRegistry('', dockerhubCredentials) {
                         dockerImage.push()
                     }
                 }
+            }
+        }
+        stage('Rolling Deploy on AWS EKS') {
+            steps {
+                    withAWS(credentials: 'awsCreds', region: 'us-east-1') {
+                            sh 'aws eks --region us-east-1 update-kubeconfig --name Travel-Blog'
+                            sh 'kubectl apply -f $PWD/my-travel-blog-deploy.yaml'
+                    }
+                    
             }
         }        
     }
