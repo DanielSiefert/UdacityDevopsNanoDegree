@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-travel-blog
-        image: danielsiefert/devops-capstone:latest
+        image: danielsiefert/devops-capstone:$BUILD_NUMBER
         ports:
         - containerPort: 80
 
