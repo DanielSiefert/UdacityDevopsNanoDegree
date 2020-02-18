@@ -1,4 +1,4 @@
-This project pulls together techniques used to run containers in various different manners from the simplest running of a container using docker to running the same container in a 3 node kubernetes cluster on AWS's EKS.  In addition to showing how to run a container, the project can introduce the basics of continuous integration when linked with CircleCI
+This project pulls together techniques used to run containers in various different manners from the simplest running of a container using docker to running the same container in a 3 node kubernetes cluster on AWS's EKS.  In addition to showing how to run a container, the project can introduce the basics of continuous integration when linked with a Jenkins CI/CD server.
 
 Takes a Dockerfile and creates a Docker container in the pipeline.
 
@@ -53,19 +53,17 @@ Kubernetes cluster deploys docker container with CloudFormation using eksctl (ru
 
 - On Github fork the repo then clone to your local machine
 
-- Edit the /.circleci/config.yaml file to update the container name on line 5 
+- Edit the Jenkins file to update the container name on line 5 
 
-- In your CircleCI account, add your repo and under project settings add DOCKERHUB_USERNAME and DOCKERHUB_PASS environment variables so that it can push to docker hub once CI steps have been completed.
+- Configure the repo on your Jenkins Server making sure to add your Docker Hub and AWS credentials so that the CI process can push to docker hub and deploy the container to AWS EKS as part of the CI/CD process.
 
 - Edit the index.html file in the travel-blog-site subfolder and on line 62 change the title of the blog to your own name
 
 - Push index.html change up to your GitHub Repo
 
-- Monitor CircleCI job for a pass
+- Monitor Jenkins job for a pass
 
 - Check DockerHub for an updated version of the container
-
-- Run `kubectl apply -f my-travel-blog-deploy.yaml` to update the deployment
 
 - If you haven't already started the service run `kubectl apply -f my-travel-blog-svc.yaml`
 
