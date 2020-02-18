@@ -35,7 +35,7 @@ pipeline {
             steps {
                     withAWS(credentials: 'awsCreds', region: 'us-east-1') {
                             sh 'aws eks --region us-east-1 update-kubeconfig --name Travel-Blog'
-                            sh 'kubectl apply -f $PWD/my-travel-blog-delpoy.yaml'
+                            sh 'kubectl apply -f $PWD/my-travel-blog-deploy.yaml'
                     }
                     
             }
